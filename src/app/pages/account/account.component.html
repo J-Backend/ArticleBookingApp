@@ -1,0 +1,93 @@
+
+<div  class="boxCenter container boxAccount">
+  <app-loading *ngIf="isloading"></app-loading>
+
+  <div  class="titleProfile" *ngIf="customer && !isloading">
+    <p>{{ customer.name }} {{ customer.surname }} Account</p>
+  </div>
+    <div *ngIf="!isloading" class="boxHead mb-3">
+      <form class="boxForm">
+        <label
+        *ngIf="!isloading" 
+          for="table-complete-search"
+          class="col-xs-3 col-sm-auto col-form-label"
+          >Search:</label
+        >
+        <div class="col-xs-3 col-sm-auto">
+          <input
+          *ngIf="!isloading" 
+            id="table-complete-search"
+            type="text"
+            class="form-control filter"
+            name="searchTerm"
+            [(ngModel)]="filter"
+            (change)="loadTransactions()"
+            placeholder="YYYY-MM-dd"
+            autocomplete="off"
+          />
+        </div>
+     
+      </form>
+  
+ 
+    </div>
+  
+    @if(!isloading){
+      @if(paginatedResponse$ |async; as pagedList){
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              @for (item of columnNames; track $index) {
+              <th scope="col" class="title">{{ item }}</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transaction of pagedList.data" class="body-row">
+              <th scope="row">{{ transaction.transactionRecordId }}</th>
+              <td class="value">
+                <ngb-highlight [result]="formatDate(transaction.date)" [term]="filter" />
+              </td>
+              <td class="value hide">
+                {{transaction.payment}}
+              </td>
+              <td class="value hide">
+                {{transaction.balance}}
+              </td>
+        
+    
+            </tr>
+            
+          </tbody>
+         
+        </table>
+      
+        <div class="boxFooterAccount">
+          <ngb-pagination
+            class="pagination"
+            [collectionSize]="pagedList.totalRecords!"
+            (pageChange)="onPageChange($event)"
+            [pageSize]="pageSize"
+            [maxSize]="10"
+            [(page)]="page"
+            [boundaryLinks]="true"
+            [rotate]="true"
+          >
+          </ngb-pagination>
+          <select
+          class="form-select"
+          style="width: auto"
+          name="pageSize"
+          [(ngModel)]="pageSize"
+          (ngModelChange)="loadTransactions()"
+        >
+          <option [ngValue]="5">5 items</option>
+          <option [ngValue]="8">8 items</option>
+          <option [ngValue]="10">10 items</option>
+        </select>
+        </div>
+        }
+    }
+   
+  </div>
+

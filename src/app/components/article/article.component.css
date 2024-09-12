@@ -1,0 +1,80 @@
+.boxFormNew{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form {
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 300px;
+    width:300px;
+  }
+  
+
+  .input-container {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+  
+  .input-container input, .form button {
+    outline: none;
+    border: 1px solid #e5e7eb;
+   
+  }
+  
+  .input-container input {
+    background-color: #fff;
+    padding: 0.7rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: var(--text-secondary-color);
+    
+  }
+  
+  .submit {
+
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    line-height: 1.25rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+ 
+  span{
+    font-size: 13px;
+    color: var(--alert-color);
+
+  }
+
+  .boxActions{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .idDisable input{
+    background-color:var(--bg-primary-color);
+  }
+
+  .action{
+    width: 30%;
+  }
+  .delete{
+    background-color: var(--text-secondary-color);
+  }
+
+

@@ -1,0 +1,41 @@
+
+<form [formGroup]="authForm"  (ngSubmit)="onSubmit()" class="form">
+    @if (isRegister) {
+      <div class="input-container">
+        <input  formControlName="name" type="text" placeholder="Enter name">
+        <span *ngIf="authForm.get('name')?.invalid && authForm.get('name')?.touched">
+          Name is required
+        </span>
+    </div>
+    }
+     <div class="input-container">
+       <input formControlName="email" type="email" placeholder="Enter email">
+       <span *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched">
+        Enter a valid email
+      </span>
+   </div>
+   <div class="input-container">
+       <input formControlName="password" type="password" placeholder="Enter password">
+       <span *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched">
+       Require 8 characters long
+      </span>
+     </div>
+      <button type="submit" class="submit">
+        {{ isRegister ? 'Sign up' : 'Sign in' }}
+   </button>
+
+   @if (!isRegister) {
+    <p class="signup-link">
+      No account?
+      <a routerLink="/register">Sign up</a>
+    </p>
+   }
+   @if (isRegister) {
+    <p class="signup-link">
+      Already have an account?
+      <a routerLink="/login">Sign in</a>
+    </p>
+   }
+  
+</form>
+

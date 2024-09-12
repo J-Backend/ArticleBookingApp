@@ -1,0 +1,9 @@
+
+
+<div class="boxCenter">
+  <div class="titleEditArticle" *ngIf="customer">
+      <p>{{customer.name}} {{customer.surname}} edit layaway # {{this.layawayId}} </p>
+      <app-article (entity)="onUpdateArticle($event)" (deleteArticle)="onDeleteArticle($event)" [isEditing]="true" [editArticle]="this.article"></app-article>
+    </div>
+  
+</div>

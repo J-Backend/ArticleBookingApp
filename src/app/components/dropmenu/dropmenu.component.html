@@ -1,0 +1,17 @@
+
+
+	<div class="row boxDropmenu">
+		<div class="col">
+		  <div ngbDropdown class="d-inline-block">
+			<button type="button" class="btn " id="dropdownBasic1" ngbDropdownToggle>
+			  Actions
+			</button>
+			<div ngbDropdownMenu >
+			  <button type="button" *ngFor="let action of actions" ngbDropdownItem (click)="action.action()">
+				{{ action.label }}
+			  </button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+

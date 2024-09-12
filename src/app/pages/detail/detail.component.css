@@ -1,0 +1,71 @@
+
+.boxDetail{
+  flex-direction: column;
+
+}
+.boxHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boxForm{
+
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  
+}
+.boxFooterDetail{
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter {
+  outline: none; 
+  box-shadow: none; 
+  border-color: transparent; 
+}
+
+
+.filter:focus {
+  outline: none; 
+  box-shadow: none; 
+  border-color: transparent; 
+}
+
+.btnAction{
+  border: none;
+  outline: none;
+}
+
+
+
+
+
+
+ngb-pagination ::ng-deep a {
+    color: var(--bg-secondary-color) !important;
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link {
+    border: none;
+    background-color: var(--primary-color);
+  }
+  
+  ngb-pagination ::ng-deep ul>li:not(.active)>a {
+    color: var(--text-secondary-color) !important;
+  }
+  
+  ngb-pagination ::ng-deep .page-item.active .page-link:focus,
+  .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+  }
+  
+  ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem dimgrey;
+  }

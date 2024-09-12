@@ -1,0 +1,72 @@
+<div class="boxFormNew container">
+    <form [formGroup]="articleForm" (ngSubmit)="onSubmit()" class="form">
+
+      <div *ngIf="isEditing" class="input-container idDisable">
+        <input
+          formControlName="articleId"
+          type="text"
+         
+        />
+      </div>
+     
+  
+      <div class="input-container">
+        <input
+          formControlName="description"
+          type="text"
+          placeholder="Enter description"
+        />
+        <span
+          *ngIf="
+            articleForm.get('description')?.invalid &&
+            articleForm.get('description')?.touched
+          "
+        >
+          Description is required
+        </span>
+      </div>
+      <div class="input-container">
+          <input
+            formControlName="price"
+            type="number"
+            min="0.01"
+            step="0.01"
+            placeholder="Enter price"
+          />
+          <span
+            *ngIf="
+              articleForm.get('price')?.invalid && articleForm.get('price')?.touched
+            "
+          >
+            Price is required
+          </span>
+        </div>
+        <div class="input-container">
+          <input
+            formControlName="quantity"
+            type="number"
+            min="1"
+            step="1"
+            placeholder="Enter quantity"
+          />
+          <span
+            *ngIf="
+              articleForm.get('quantity')?.invalid && articleForm.get('quantity')?.touched
+            "
+          >
+            Quantity is required
+          </span>
+        </div>
+     
+    
+      <div class="boxActions">
+
+        <button type="submit" class="submit action" >
+            {{ isEditing ? "Update" : "Create" }}
+        </button>
+        <button (click)="onDeleting()" *ngIf="isEditing" type="button" class="submit action delete">
+          Delete
+      </button>
+      </div>
+    </form>
+  </div>

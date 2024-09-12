@@ -1,0 +1,93 @@
+
+
+<div  class="boxCenter container boxCustomers">
+  <app-loading *ngIf="isloading" ></app-loading>
+  <div *ngIf="!isloading" class="boxHead mb-3">
+    <form class="boxForm">
+      <label
+      *ngIf="!isloading" 
+        for="table-complete-search"
+        class="col-xs-3 col-sm-auto col-form-label"
+        >Search:</label
+      >
+      <div class="col-xs-3 col-sm-auto">
+        <input
+        *ngIf="!isloading" 
+          id="table-complete-search"
+          type="text"
+          class="form-control filter"
+          name="searchTerm"
+          [(ngModel)]="filter"
+          (change)="loadCustomers()"
+          placeholder="Name"
+          autocomplete="off"
+        />
+      </div>
+   
+    </form>
+
+    <div class="boxAdd" *ngIf="!isloading" >
+      <button class="btn btnAddUser" (click)="openModalCustomer({})">
+        <i class="bi bi-person-fill-add"></i>
+      </button>
+    </div>
+  </div>
+
+  @if(paginatedResponse$ |async; as pagedList){
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        @for (item of columnNames; track $index) {
+        <th scope="col" class="title">{{ item }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of pagedList.data" class="body-row">
+        <th scope="row">{{ customer.customerId }}</th>
+        <td class="value">
+          <ngb-highlight [result]="customer.name" [term]="filter" />
+        </td>
+        <td class="value hide">
+          <ngb-highlight [result]="customer.surname" [term]="filter" />
+        </td>
+        <td class="value hide">
+          <ngb-highlight [result]="customer.email" [term]="filter" />
+        </td>
+        <td class="d-flex justify-content-evenly">
+          <app-dropmenu [actions]="do(customer)"></app-dropmenu>
+        </td>
+      </tr>
+      <tr *ngIf="!paginatedResponse$">
+        <td colspan="4" style="text-align: center">No customers found</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="boxFooterCustomer">
+    <ngb-pagination
+      class="pagination"
+      [collectionSize]="pagedList.totalRecords!"
+      (pageChange)="onPageChange($event)"
+      [pageSize]="pageSize"
+      [maxSize]="10"
+      [(page)]="page"
+      [boundaryLinks]="true"
+      [rotate]="true"
+    >
+    </ngb-pagination>
+
+    <select
+      class="form-select"
+      style="width: auto"
+      name="pageSize"
+      [(ngModel)]="pageSize"
+      (ngModelChange)="loadCustomers()"
+    >
+      <option [ngValue]="5">5 items</option>
+      <option [ngValue]="8">8 items</option>
+      <option [ngValue]="10">10 items</option>
+    </select>
+  </div>
+  }
+</div>

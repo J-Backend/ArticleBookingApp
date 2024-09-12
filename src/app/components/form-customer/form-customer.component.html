@@ -1,0 +1,54 @@
+
+
+<div class="boxFormUser">
+  
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="input-container">
+      <input formControlName="name" type="text" placeholder="Enter name" />
+      <span
+        *ngIf="
+          customerForm.get('name')?.invalid && customerForm.get('name')?.touched
+        "
+      >
+        Name is required
+      </span>
+    </div>
+
+    <div class="input-container">
+      <input
+        formControlName="surname"
+        type="text"
+        placeholder="Enter surname"
+      />
+      <span
+        *ngIf="
+          customerForm.get('surname')?.invalid &&
+          customerForm.get('surname')?.touched
+        "
+      >
+        Surname is required
+      </span>
+    </div>
+    <div class="input-container">
+      <input formControlName="email" type="email" placeholder="Enter email" />
+      <span
+        *ngIf="
+          customerForm.get('email')?.invalid &&
+          customerForm.get('email')?.touched
+        "
+      >
+        Enter a valid email
+      </span>
+    </div>
+    <div class="boxActions">
+      <button type="submit" class="submit action">
+        {{ isEditing ? "Update" : "Create" }}
+      </button>
+      @if(isEditing){
+      <button (click)="deleteCustomer()" type="button" class="submit action delete">
+        Delete
+      </button>
+      }
+    </div>
+  </form>
+</div>

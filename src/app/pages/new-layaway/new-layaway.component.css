@@ -1,0 +1,74 @@
+.boxLayaway {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+
+.submit {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  line-height: 1.25rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.boxSend {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.titleNewLayaway {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.titleNewLayaway p {
+  font-size: 20px;
+}
+
+
+.boxTable {
+  height: 50%;
+  width: 100%;
+}
+
+.boxFooterLayaway{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+
+ngb-pagination ::ng-deep a {
+  color: var(--bg-secondary-color) !important;
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  border: none;
+  background-color: var(--primary-color);
+}
+
+ngb-pagination ::ng-deep ul>li:not(.active)>a {
+  color: var(--text-secondary-color) !important;
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link:focus,
+.page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem dimgrey;
+}
+
+ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem dimgrey;
+}
+

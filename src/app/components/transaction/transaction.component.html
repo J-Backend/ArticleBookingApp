@@ -1,0 +1,61 @@
+<div class="boxFormTransaction">
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="titleProfile" *ngIf="customer">
+      <p>New Payment</p>
+    </div>
+
+    <div class="input-container disable">
+      <input
+        formControlName="customer"
+        type="text"
+        placeholder="Enter customer"
+      />
+      <span
+        *ngIf="
+          transactionForm.get('customer')?.invalid &&
+          transactionForm.get('customer')?.touched
+        "
+      >
+        Customer is required
+      </span>
+    </div>
+    <div class="input-container disable">
+      <input
+        formControlName="layawayId"
+        type="text"
+       
+        placeholder="Enter layawayId"
+      />
+      <span
+        *ngIf="
+          transactionForm.get('layawayId')?.invalid &&
+          transactionForm.get('layawayId')?.touched
+        "
+      >
+        LayawayId is required
+      </span>
+    </div>
+
+    <div class="input-container">
+      <input
+        formControlName="payment"
+        type="number"
+        min="0.01"
+        step="0.01"
+        placeholder="Enter payment"
+      />
+      <span
+        *ngIf="
+          transactionForm.get('payment')?.invalid &&
+          transactionForm.get('payment')?.touched
+        "
+      >
+        Payment is required
+      </span>
+    </div>
+
+    <div class="boxActions">
+      <button type="submit" class="submit action">Aply</button>
+    </div>
+  </form>
+</div>

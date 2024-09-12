@@ -1,0 +1,65 @@
+<div class="boxLayaway boxCenter">
+  <app-loading *ngIf="isloading"></app-loading>
+  <div class="titleNewLayaway" *ngIf="customer && !isloading">
+    <p>{{ customer.name }} {{ customer.surname }} new layaway</p>
+    <app-article
+      (entity)="onReceiveArticle($event)"
+      [isEditing]="false"
+    ></app-article>
+  </div>
+
+  <div class="boxTable " *ngIf="customer && !isloading">
+    <table class="table table-striped container table-hover ">
+      <thead>
+        <tr>
+          <th scope="col">Article</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody   id="body">
+        @for (article of articlesPaginated; track $index; let i = $index) {
+        <tr>
+          <td>
+            {{ article.description }}
+          </td>
+          <td>{{ article.price | number }}</td>
+          <td>{{ article.quantity | number }}</td>
+          <td>{{ article.subtotal | number }}</td>
+          <td>
+            <button
+              (click)="remove(article)"
+              type="button"
+              class="btn btnAction"
+            >
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    <div *ngIf="articlesPaginated.length>0" class="boxFooterLayaway container">
+      <ngb-pagination
+        class="pagination"
+        [collectionSize]="totalRecords"
+        (pageChange)="onPageChange($event)"
+        [pageSize]="pageSize"
+        [maxSize]="3"
+        [(page)]="page"
+        [boundaryLinks]="true"
+        [rotate]="true"
+      >
+      </ngb-pagination>
+   
+     
+    </div>
+
+    <div *ngIf="articles.length > 0" class="boxSend container">
+      <button (click)="createLayaway()" class="btn submit">Send</button>
+    </div>
+  </div>
+</div>

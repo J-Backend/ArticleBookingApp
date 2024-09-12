@@ -1,0 +1,87 @@
+
+.boxProfile{
+  flex-direction: column;
+}
+.boxHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boxForm{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  
+}
+.boxFooterProfile{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.titleProfile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.titleProfile p{
+  font-size: 20px;
+
+}
+
+.btnModal {
+  border: none;
+  outline: none;
+}
+
+.btnModal i {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.filter {
+  outline: none; 
+  box-shadow: none; 
+  border-color: transparent; 
+}
+
+
+.filter:focus {
+  outline: none; 
+  box-shadow: none; 
+  border-color: transparent; 
+}
+
+ngb-pagination ::ng-deep a {
+  color: var(--bg-secondary-color) !important;
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link {
+  border: none;
+  background-color: var(--primary-color);
+}
+
+ngb-pagination ::ng-deep ul>li:not(.active)>a {
+  color: var(--text-secondary-color) !important;
+}
+
+ngb-pagination ::ng-deep .page-item.active .page-link:focus,
+.page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem dimgrey;
+}
+
+ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.1rem dimgrey;
+}
+
+
+/* @media (max-width: 1000px) {
+  .userForm {
+    flex-direction: column;
+    height: 200px;
+  }
+} */
